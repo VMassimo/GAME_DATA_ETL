@@ -1,5 +1,7 @@
 from api import APIClient
+from endpoints.games import GamesEndpoint 
 import pprint 
+
 
 
 def main():
@@ -14,7 +16,9 @@ def main():
         "key": "5d9f1b5510dc47f69480887ec649dccb"
     }
 
-    response = client.get_endpoint1(params=params)
+    games_endpoint = GamesEndpoint(client)
+
+    response = games_endpoint.get_games(params=params)
     pprint.pprint(response)
 
 if __name__ == "__main__":
