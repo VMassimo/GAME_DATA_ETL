@@ -37,3 +37,23 @@ class APIClient:
             logger.error(f"API Request failed: {e}")
             return None
         
+    def pagination(self, endpoint, limit=100):
+        """
+        Function to handle pagination automatically.
+        """
+        all_data = []
+        offset = 0
+
+        while True:
+            params = {"limit": limit, "offset": offset}
+            response = self._make_request("GET", endpoint, params=params)
+            if not response or not response.get("results"):
+                break
+
+            all_data.extend(response["results"])
+            if len(response["results"]) < limit:
+                break  # Exit loop if we retrieved less than the limit
+
+            offset += limit
+
+        return all_data

@@ -3,6 +3,8 @@ from endpoints.games import GamesEndpoint
 import pprint
 
 def main():
+
+    # Steam Games Endpoint
     games_base_url = "https://api.rawg.io/api"
     headers = {}
 
