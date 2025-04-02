@@ -36,3 +36,4 @@ class APIClient:
         except requests.exceptions.RequestException as e:
             logger.error(f"API Request failed: {e}")
             return None
+        
