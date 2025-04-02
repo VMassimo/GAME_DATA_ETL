@@ -7,11 +7,14 @@ class GamesEndpoint:
     def __init__(self, client: APIClient):
         self.client = client
 
-    def get_games(self, params=None):
+    def get_games(self, params=None, id = None):
         """
         Fetch a single page of games.
         """
-        endpoint = "/games"
+        if id is not None:
+            endpoint = f"/games/{id}"
+        else:
+            endpoint = "/games"
         return self.client._make_request("GET", endpoint, params=params)
 
     def get_all_games(self, params):
@@ -20,7 +23,7 @@ class GamesEndpoint:
         """
         all_games = []
         page = 1
-        page_size = params.get("page_size", 100)
+        page_size = params.get("page_size", 50)
 
         while True:
             params["page"] = page

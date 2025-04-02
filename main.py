@@ -14,11 +14,12 @@ def main():
     params = {
         "page": 1,
         "page_size": 1,
-        "key": "5d9f1b5510dc47f69480887ec649dccb"
+        "key": "5d9f1b5510dc47f69480887ec649dccb",
+        # "id": 3498
     }
 
     # Use pagination from GamesEndpoint
-    all_games = games_endpoint.get_games(params=params)
+    all_games = games_endpoint.get_games(params=params, id = 3498)
 
     pprint.pprint(all_games)
 
